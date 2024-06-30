@@ -142,6 +142,3 @@ burnToken(500)
 
 This project is licensed under the MIT License.
 
----
-
-This version of the README includes additional details and steps to ensure a complete and thorough understanding of the `BookToken` smart contract, its features, and how to use it. It should be well-suited for a GitHub repository.
