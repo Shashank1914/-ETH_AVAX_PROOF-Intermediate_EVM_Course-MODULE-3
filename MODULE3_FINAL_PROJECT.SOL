@@ -1,30 +1,27 @@
-// SPDX-License-Identifier: MIT    
-
-pragma solidity ^0.8.0; 
-
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract BookToken is ERC20 {
 
     address private owner;
 
-    constructor() ERC20("BookToken", "BKT")
-    {
+    constructor() ERC20("BookToken", "BKT") {
         owner = msg.sender;
     }
 
-    modifier onlyOwner()
-    {
+    modifier onlyOwner() {
         require(msg.sender == owner, "Only the contract owner has rights over this function!");
         _;
     }
 
-    function mintToken(address to, uint256 amount) public onlyOwner
-    {
+    function mintToken(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
 
     function burnToken(uint256 amount) public {
         _burn(msg.sender, amount);
     }
-}
+
+    // Adding the transfer function
+    function transferToken(address to, uint256 amount) public returns (bool) {
+        _transfer(msg.sender, to, amount);
+        return true;
+    }
